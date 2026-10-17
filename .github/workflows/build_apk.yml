@@ -35,6 +35,10 @@ jobs:
           npm install --legacy-peer-deps @capacitor/core @capacitor/cli @capacitor/android
           npx cap init "Al-Quran" "com.alquran.app" --web-dir dist
           npx cap add android
+          
+          # হার্ডওয়্যার অ্যাক্সিলারেশন অন করে ল্যাগ কমানো
+          sed -i 's/<application/<application android:hardwareAccelerated="true" android:largeHeap="true"/' android/app/src/main/AndroidManifest.xml
+          
           npx cap sync android
 
       - name: Build Android Debug APK
